@@ -1,0 +1,78 @@
+Diffusion-Limited Aggregation Crystal Grower
+
+This program is a simulation which utilizes random walkers to "deposit"
+particles onto a seeded source. Currently this program has a simply line seed,
+though I'd like to implement either a PNG image as a seed, or the ability to
+draw directly on the display window to set the seed.
+
+PROGRAM OPERATION
+
+  All parameters are set using the controls on the right.
+
+  Left/Right and Up/Down probabilities are governed independently. That is to
+  say, the sum of the probability for motion on the X-axis is 1, and the sum of
+  the probability for motion on the Y-axis is 1. Currently each particle has the
+  same probability distribution.  Note that any undefined probability will
+  result in zero motion, giving us the ability for particles to move to any of
+  the 8 nearest neighboring points.
+
+  Number of walkers defines how many particles are being simulated at once.
+  Particles are reset if they are deposited, or if they drift too far from the
+  simulation. 
+
+  X-Line defines the bottom edge of the initialized random position of the
+  particles in box mode, the position of a horizontal line in horizontal
+  mode, and the starting line position for horizontal-advancing mode.
+
+  Y-Line defines the right-most edge of the initialized random position of the
+  particles in box mode, the position of a vertical line in vertical mode, and
+  the starting line position for vertical-advancing mode.
+
+  Deposit rate is only used for advancing modes. This specifies the number of
+  positions needed to advance to get the source line to advance. Advances are
+  only chosen when the maximum height increases.
+
+  Modes:
+    Random box: Particles are randomly distributed in a box with the top left
+    corner defined as being inset from the top left corner of the simulation
+    region and the bottom right being set by the X-Line, and Y-Line Parameters
+
+    Random X-Line: Particles are randomly distributed on a horizontal line
+    defined by the Y-Line parameter
+
+    Random Y-Line: Particles are randomly distributed on a vertical line defined
+    by the X-Line parameter
+
+    Advance X: --NOT DOCUMENTED YET--
+    Advance Y: --NOT DOCUMENTED YET--
+
+  Save Data saves the clustered data to a comma separated list of coordinates
+
+  Run begins the simulation
+  Pause pauses the simulation
+  Stop stops the simulation   
+    See Bug List on these options
+
+  Draw Walkers enables/disables the walkers being updated.
+
+  The Display panel draws cluster cells as black, and walkers as white.
+
+KNOWN BUGS:
+
+  #1 -- Issues with the state system - 
+    Run, Pause, and Stop were hacked together quickly in order to gather data
+    effectively for PHYS 486. A better state system should be implemented to
+    better handle the simulation.
+
+  #2 -- Issues with the ending of a simulation -
+    After an advance-x/y simulation is run, a dialog is supposed to pop-up and
+    tell the user to save the data-file. This works, however afterwards the
+    program crashes.
+
+TO DO:
+
+  General clean up and commenting. This code was written for PHYS 486, in which
+  we had a week to generate data and write a paper on the simulation we wrote.
+  Assignments were given every week, so by the time this program was written to
+  a usable state, it had to be abandoned.
+
